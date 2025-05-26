@@ -18,27 +18,33 @@ const FlashcardComponent = ({ card, isFlipped, onClick }: FlashcardProps) => {
       >
         {/* Front of card */}
         <div className="absolute inset-0 w-full h-full backface-hidden">
-          <div className="w-full h-full bg-white rounded-2xl shadow-xl border border-gray-200/50 p-8 flex flex-col items-center justify-center hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02]">
+          <div className="w-full h-full bg-gradient-to-br from-white to-blue-50/50 rounded-2xl shadow-xl border-2 border-blue-200/60 p-8 flex flex-col items-center justify-center hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] hover:border-blue-300">
             <div className="text-center space-y-6">
-              <div className="inline-flex items-center px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-semibold uppercase tracking-wider">
+              <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white text-xs font-bold uppercase tracking-wider shadow-md">
                 Question
               </div>
-              <div className="text-xl md:text-2xl font-medium text-gray-900 leading-relaxed max-w-lg">
+              <div className="text-xl md:text-2xl font-semibold text-gray-900 leading-relaxed max-w-lg">
                 {card.front}
               </div>
             </div>
             <div className="absolute bottom-6 left-6 right-6 flex justify-between items-center text-xs">
-              <span className="text-gray-500 font-medium">Click to reveal answer</span>
+              <span className="text-blue-600 font-semibold bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
+                Click to reveal answer
+              </span>
               <div className="flex items-center space-x-3">
                 {card.timesCorrect + card.timesIncorrect > 0 && (
-                  <div className="flex items-center space-x-2 text-gray-400">
-                    <span className="text-green-600 font-medium">{card.timesCorrect}✓</span>
-                    <span className="text-red-500 font-medium">{card.timesIncorrect}✗</span>
+                  <div className="flex items-center space-x-2">
+                    <span className="text-green-600 font-bold bg-green-50 px-2 py-1 rounded-full border border-green-200">
+                      {card.timesCorrect}✓
+                    </span>
+                    <span className="text-red-500 font-bold bg-red-50 px-2 py-1 rounded-full border border-red-200">
+                      {card.timesIncorrect}✗
+                    </span>
                   </div>
                 )}
-                <div className="flex items-center space-x-1">
+                <div className="flex items-center space-x-1 bg-amber-50 px-2 py-1 rounded-full border border-amber-200">
                   {Array.from({ length: card.difficulty }, (_, i) => (
-                    <div key={i} className="w-2 h-2 bg-yellow-400 rounded-full"></div>
+                    <div key={i} className="w-2.5 h-2.5 bg-gradient-to-r from-amber-400 to-orange-400 rounded-full shadow-sm"></div>
                   ))}
                 </div>
               </div>
@@ -48,22 +54,24 @@ const FlashcardComponent = ({ card, isFlipped, onClick }: FlashcardProps) => {
 
         {/* Back of card */}
         <div className="absolute inset-0 w-full h-full backface-hidden rotate-y-180">
-          <div className="w-full h-full bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl shadow-xl border border-blue-200/50 p-8 flex flex-col items-center justify-center hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02]">
+          <div className="w-full h-full bg-gradient-to-br from-teal-50 to-green-50 rounded-2xl shadow-xl border-2 border-teal-200/60 p-8 flex flex-col items-center justify-center hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] hover:border-teal-300">
             <div className="text-center space-y-6">
-              <div className="inline-flex items-center px-3 py-1 rounded-full bg-gradient-to-r from-blue-100 to-purple-100 text-blue-700 text-xs font-semibold uppercase tracking-wider">
+              <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-teal-500 to-green-500 text-white text-xs font-bold uppercase tracking-wider shadow-md">
                 Answer
               </div>
-              <div className="text-xl md:text-2xl font-medium text-gray-900 leading-relaxed max-w-lg">
+              <div className="text-xl md:text-2xl font-semibold text-gray-900 leading-relaxed max-w-lg">
                 {card.back}
               </div>
             </div>
             <div className="absolute bottom-6 left-6 right-6 flex justify-between items-center text-xs">
-              <span className="text-gray-500 font-medium">Did you get it right?</span>
+              <span className="text-teal-600 font-semibold bg-teal-50 px-3 py-1 rounded-full border border-teal-200">
+                Did you get it right?
+              </span>
               <div className="flex items-center space-x-2">
-                <span className="text-gray-400">Difficulty:</span>
-                <div className="flex items-center space-x-1">
+                <span className="text-gray-600 font-medium">Difficulty:</span>
+                <div className="flex items-center space-x-1 bg-amber-50 px-2 py-1 rounded-full border border-amber-200">
                   {Array.from({ length: card.difficulty }, (_, i) => (
-                    <div key={i} className="w-2 h-2 bg-yellow-400 rounded-full"></div>
+                    <div key={i} className="w-2.5 h-2.5 bg-gradient-to-r from-amber-400 to-orange-400 rounded-full shadow-sm"></div>
                   ))}
                 </div>
               </div>

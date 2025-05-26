@@ -92,7 +92,7 @@
     text-wrap: balance;
   }
   
-  /* Enhanced animations */
+  /* Enhanced animations for ADHD-friendly design */
   .animate-fade-in {
     animation: fadeIn 0.5s ease-out forwards;
   }
@@ -111,5 +111,31 @@
   /* Smooth transitions for interactive elements */
   .transition-smooth {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* ADHD-friendly focus indicators */
+  .focus-ring {
+    @apply focus:ring-4 focus:ring-blue-300/50 focus:ring-offset-2 focus:ring-offset-white;
+  }
+  
+  /* High contrast mode utilities */
+  .adhd-focus {
+    @apply transition-all duration-200 hover:shadow-lg hover:scale-[1.02];
+  }
+  
+  /* Gentle pulsing for important elements */
+  .gentle-pulse {
+    animation: gentlePulse 3s ease-in-out infinite;
+  }
+  
+  @keyframes gentlePulse {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.95;
+      transform: scale(1.01);
+    }
   }
 }
