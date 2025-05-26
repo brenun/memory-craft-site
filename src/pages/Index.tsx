@@ -1,4 +1,3 @@
-
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
 import Dashboard from '../components/Dashboard';
@@ -6,7 +5,7 @@ import Classes from '../components/Classes';
 import Decks from '../components/Decks';
 import Study from '../components/Study';
 import { AppSidebar } from '../components/AppSidebar';
-import { SidebarProvider, SidebarInset, SidebarTrigger } from '@/components/ui/sidebar';
+import { SidebarProvider, SidebarInset } from '@/components/ui/sidebar';
 
 // Mock data structure - ready for backend integration
 export interface Flashcard {
@@ -116,9 +115,6 @@ const Index = () => {
           <SidebarInset className="flex-1">
             <header className="sticky top-0 z-10 bg-white/90 backdrop-blur-md border-b border-blue-100/60 px-6 py-4 shadow-sm">
               <div className="flex items-center gap-4">
-                <div className="p-1.5 hover:bg-blue-50 rounded-lg transition-all duration-200 hover:shadow-sm border border-transparent hover:border-blue-200">
-                  <SidebarTrigger className="text-blue-600 hover:text-purple-600 transition-colors duration-200" />
-                </div>
                 <div className="flex-1">
                   <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-700 via-purple-600 to-teal-600 bg-clip-text text-transparent">
                     Welcome to FlashLearn
