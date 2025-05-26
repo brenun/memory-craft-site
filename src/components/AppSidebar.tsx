@@ -1,5 +1,5 @@
 
-import { Calendar, Home, BookOpen, Brain, Users, Settings, TrendingUp, Plus, ChevronLeft, ChevronRight, PanelLeft } from 'lucide-react';
+import { Calendar, Home, BookOpen, Brain, Users, Settings, TrendingUp, Plus, Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import {
   Sidebar,
@@ -52,22 +52,22 @@ export function AppSidebar() {
   };
 
   return (
-    <Sidebar className="border-r border-blue-100/60 bg-gradient-to-b from-blue-50/40 to-green-50/30 backdrop-blur-sm shadow-lg">
-      <SidebarHeader className="p-6 relative">
-        {/* Integrated Toggle Button */}
-        <Button
-          onClick={toggleSidebar}
-          variant="ghost"
-          size="icon"
-          className="absolute -right-3 top-6 z-50 w-6 h-6 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full shadow-lg flex items-center justify-center border-2 border-white hover:from-blue-600 hover:to-purple-600 transition-all duration-200 hover:scale-105"
-        >
-          {state === "collapsed" ? (
-            <ChevronRight className="h-3 w-3 text-white" />
-          ) : (
-            <ChevronLeft className="h-3 w-3 text-white" />
-          )}
-        </Button>
+    <Sidebar className="border-r border-blue-100/60 bg-gradient-to-b from-blue-50/40 to-green-50/30 backdrop-blur-sm shadow-lg relative">
+      {/* Middle Toggle Button - Always Visible */}
+      <Button
+        onClick={toggleSidebar}
+        variant="ghost"
+        size="icon"
+        className="absolute -right-4 top-1/2 transform -translate-y-1/2 z-50 w-8 h-8 bg-gradient-to-r from-blue-500 via-purple-500 to-teal-500 rounded-full shadow-lg flex items-center justify-center border-2 border-white hover:from-blue-600 hover:via-purple-600 hover:to-teal-600 transition-all duration-300 hover:scale-110 hover:shadow-xl"
+      >
+        {state === "collapsed" ? (
+          <Menu className="h-4 w-4 text-white" />
+        ) : (
+          <X className="h-4 w-4 text-white" />
+        )}
+      </Button>
 
+      <SidebarHeader className="p-6">
         <Link to="/" className="flex items-center space-x-3 group">
           <div className="p-2 bg-gradient-to-br from-blue-600 via-purple-600 to-teal-500 rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
             <Brain className="h-6 w-6 text-white" />
