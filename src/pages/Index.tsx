@@ -1,11 +1,11 @@
-
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
 import Dashboard from '../components/Dashboard';
 import Classes from '../components/Classes';
 import Decks from '../components/Decks';
 import Study from '../components/Study';
-import Navigation from '../components/Navigation';
+import { AppSidebar } from '../components/AppSidebar';
+import { SidebarProvider, SidebarInset, SidebarTrigger } from '@/components/ui/sidebar';
 
 // Mock data structure - ready for backend integration
 export interface Flashcard {
@@ -108,16 +108,38 @@ const Index = () => {
   ]);
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Navigation />
-      <main className="container mx-auto px-4 py-8">
-        <Routes>
-          <Route path="/" element={<Dashboard classes={classes} />} />
-          <Route path="/classes" element={<Classes classes={classes} setClasses={setClasses} />} />
-          <Route path="/class/:classId/decks" element={<Decks classes={classes} setClasses={setClasses} />} />
-          <Route path="/deck/:deckId/study" element={<Study classes={classes} setClasses={setClasses} />} />
-        </Routes>
-      </main>
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50/30">
+      <SidebarProvider>
+        <div className="flex w-full min-h-screen">
+          <AppSidebar />
+          <SidebarInset className="flex-1">
+            <header className="sticky top-0 z-10 bg-white/80 backdrop-blur-md border-b border-gray-200/50 px-6 py-4">
+              <div className="flex items-center gap-4">
+                <SidebarTrigger className="hover:bg-gray-100 transition-colors duration-200" />
+                <div className="flex-1">
+                  <h1 className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
+                    Welcome to FlashLearn
+                  </h1>
+                  <p className="text-sm text-gray-500 mt-1">
+                    Smart flashcard learning platform
+                  </p>
+                </div>
+              </div>
+            </header>
+            
+            <main className="flex-1 p-6">
+              <div className="max-w-7xl mx-auto">
+                <Routes>
+                  <Route path="/" element={<Dashboard classes={classes} />} />
+                  <Route path="/classes" element={<Classes classes={classes} setClasses={setClasses} />} />
+                  <Route path="/class/:classId/decks" element={<Decks classes={classes} setClasses={setClasses} />} />
+                  <Route path="/deck/:deckId/study" element={<Study classes={classes} setClasses={setClasses} />} />
+                </Routes>
+              </div>
+            </main>
+          </SidebarInset>
+        </div>
+      </SidebarProvider>
     </div>
   );
 };
